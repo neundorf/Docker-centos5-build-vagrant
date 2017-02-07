@@ -1,6 +1,9 @@
 FROM aneundorf/centos5-build-openssh
 MAINTAINER juergen.wind@sharpreflections.com
 
+RUN yum update -y && \
+    yum install sudo -y 
+
 # setup the vagrant user
 RUN if ! getent passwd vagrant; then useradd -d /home/vagrant -m -s /bin/bash vagrant; fi \
     && echo vagrant:vagrant | chpasswd \
